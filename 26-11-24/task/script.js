@@ -35,7 +35,35 @@ console.log("random number");
 var randomnum=Math.random()
 console.log(randomnum);
 
-// console.log("power of a number");
+console.log("power of a number");
 
-// var power= Math.pow(7);
-// console.log(power);
+
+var pow1=4;
+var pow2=2
+var power= Math.pow(pow1,pow2);
+console.log(power);
+
+
+
+console.log("number to string");
+
+
+
+var str=pow1.toString();
+console.log(typeof str);
+console.log(str);
+
+
+console.log("number precision");
+
+let ab=12.45367;
+let pre=ab.toPrecision(4);
+console.log(pre);
+
+
+console.log("check is NaN");
+
+let value1=23;
+let value2="hello";
+console.log(isNaN(value1));
+console.log(isNaN(value2));
