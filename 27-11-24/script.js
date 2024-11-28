@@ -70,7 +70,7 @@ function student(){
     console.log(rollno);
     var val=name + " " + rollno;
     return val;
-    console.log("after return");
+    // console.log("after return");
 
 
 } 
