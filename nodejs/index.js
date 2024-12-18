@@ -1,6 +1,50 @@
 const http = require("http");
-http.createServer((request,response)=>{
-    response.end("this is node js")
-}).listen(3000,()=>{
+const fs = require('fs')
+// const { stringify } = require("querystring");
+ const server=http.createServer((request,response)=>{
+    console.log(request.method,"request")
+    // response.end('<html>')
+ 
+
+    if(response.url=='/'&& response.method==GET){
+    fs.readFile("./index.html","utf-8",(error,data)=>{
+        if(error){
+            response.end("file not found")
+        }
+        response.end(data)
+    })
+    console.log(request.url)
+});
+ 
+
+    else if(response.url=="/style.css"&&response.method==GET)
+    {
+    fs.readFile("./style.css","utf-8",(error,data)=>{
+        if(error){
+            response.end("file not found")
+        }
+        response.end(data)
+    })
+    console.log(request.url)}
+
+     
+     
+
+server.listen(3000,()=>{
     console.log("listen port 3000")
-})
+});
+}
+
+
+// let school={
+//     name:"soumya",
+//     rollno:"38",
+//     subject:'cs'
+// }
+// const myJSON = JSON.stringify(school);
+// const pase = JSON.parse(myJSON)
+
+
+// console.log(myJSON)
+// console.log(pase)
+// console.log(myJSON.parse(school))
