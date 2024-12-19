@@ -6,7 +6,7 @@ const fs = require('fs')
     // response.end('<html>')
  
 
-    if(response.url=='/'&& response.method==GET){
+   
     fs.readFile("./index.html","utf-8",(error,data)=>{
         if(error){
             response.end("file not found")
@@ -17,23 +17,12 @@ const fs = require('fs')
 });
  
 
-    else if(response.url=="/style.css"&&response.method==GET)
-    {
-    fs.readFile("./style.css","utf-8",(error,data)=>{
-        if(error){
-            response.end("file not found")
-        }
-        response.end(data)
-    })
-    console.log(request.url)}
-
-     
      
 
 server.listen(3000,()=>{
     console.log("listen port 3000")
 });
-}
+
 
 
 // let school={
