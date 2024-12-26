@@ -1,30 +1,29 @@
-async function handleSubmit(event){
+async function handleSubmit(event) {
     event.preventDefault();
-    const todo  = document.getElementById("todo").value;
-    try{
-    const response = await fetch("http://localhost:3000",{
-        method :"POST",
-        headers:{ "content-type":'apllication/JSON'},
-        body:JSON.stringify(todo)
+    const todo = document.getElementById("todo").value;
+    try {
+        const response = await fetch("http://localhost:3000/getadd", { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" }, 
+            body: JSON.stringify({ todo }) 
+        });
         
-        
-    })
-    if(!response.ok){
-        throw new error("netwok issue")
+        if (!response.ok) {
+            throw new Error("Network issue"); 
+        }
+
+        const result = await response.json(); 
+        console.log(result);
+    } catch (error) {
+        console.log("Error:", error); 
     }
 }
-catch(error){
-    console.log(error,"error")
 
+async function fetchData() {
    
-}
-}
+        const response = await fetch("http://localhost:3000/todos", { 
+            method: "GET"
+        });
 
-
-async function fetchData(){
-    const response = await fetch("http://localhost:3000/getadd",{
-        method :"GET"
-    })
-
-
+  
 }
