@@ -1,5 +1,18 @@
 {
   "dependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "name": "node19",
+  "version": "1.0.0",
+  "main": "dummy.js",
+  "devDependencies": {},
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

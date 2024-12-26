@@ -19,6 +19,7 @@ async function handleSubmit(event) {
     }
 }
 
+
 async function fetchData() {
    
         const response = await fetch("http://localhost:3000/todos", { 
@@ -27,3 +28,14 @@ async function fetchData() {
 
   
 }
+// const list= document.getElementById("list-container");
+// async function fetchdata() {
+//     console("list")
+//     const res=await fetch("https://localhost:3000/todos",{
+//         method:"GET"
+//     })
+//     todos.map(data =>{
+//         <li>data.todo</li>
+//     })
+// }fetchData()
+   
