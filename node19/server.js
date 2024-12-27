@@ -1,16 +1,32 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const { clear } = require("console");
+// const http = require("http");
+// const fs = require("fs");
+// const path = require("path");
+// const { clear } = require("console");
+import http from "http";
+import fs from "fs";
+import path from "path";
+// import tododata from "./todo.js"
 
+
+
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+console.log(__dirname)
+// console.log(tododata)
 const jsonpath = path.join(__dirname, "todo.json");
+const content = JSON.stringify({ tododata: [] });
+// console.log(content,"content")
+// const jsonpath = path.join(__dirname, "todo.json");
+
 
 
 async function readjsonfile() {
     try {
       
         if (!fs.existsSync(jsonpath)) {
-            await fs.promises.writeFile(jsonpath, JSON.stringify([])); 
+            await fs.promises.writeFile(jsonpath,content,"utf-8"); 
         }
         const fileContent = await fs.promises.readFile(jsonpath, "utf-8");
         return JSON.parse(fileContent); 
@@ -80,7 +96,7 @@ const server = http.createServer(async (request, response) => {
                 const todos = await readjsonfile();
                 todos.push(newTodo);
                 await writejsonfile(todos);
-                console.log("newtodo list",newTodo)
+                // console.log("newtodo list",newTodo)
                 // console.log("Updated todos list:", todos);
             
                 response.writeHead(201, { "Content-Type": "application/json" });

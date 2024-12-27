@@ -1,5 +1,5 @@
 
-export const tododata=
+const tododata=
 [
   {
     "todo": "work1"
@@ -14,4 +14,4 @@ export const tododata=
     "todo": "task23"
   }
 ]
-
+export default tododata;
