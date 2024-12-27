@@ -1,41 +1,58 @@
+
 async function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
+
     const todo = document.getElementById("todo").value;
     try {
-        const response = await fetch("http://localhost:3000/getadd", { 
-            method: "POST",
-            headers: { "Content-Type": "application/json" }, 
-            body: JSON.stringify({ todo }) 
+        const response = await fetch("http://localhost:3000/todos", {
+            method: "POST", 
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ todo })
         });
-        
+
         if (!response.ok) {
             throw new Error("Network issue"); 
         }
 
         const result = await response.json(); 
-        console.log(result);
+        console.log("Todo added:", result);
+
+      
+        await fetchData();
     } catch (error) {
-        console.log("Error:", error); 
+        console.log("Error:", error);
     }
 }
 
 
 async function fetchData() {
-   
-        const response = await fetch("http://localhost:3000/todos", { 
+    const list = document.getElementById("list-container"); 
+    list.innerHTML = "";
+
+    try {
+        const response = await fetch("http://localhost:3000/todos", {
             method: "GET"
         });
 
-  
+        if (!response.ok) {
+            throw new Error("Network issue");
+        }
+
+        const todos = await response.json()
+
+    
+        todos.forEach(data => {
+            const li = document.createElement("li");
+            li.textContent = data.todo;
+            list.appendChild(li);
+        });
+    } catch (error) {
+        console.log("Error fetching todos:", error); 
+    }
 }
-// const list= document.getElementById("list-container");
-// async function fetchdata() {
-//     console("list")
-//     const res=await fetch("https://localhost:3000/todos",{
-//         method:"GET"
-//     })
-//     todos.map(data =>{
-//         <li>data.todo</li>
-//     })
-// }fetchData()
-   
+
+
+// document.getElementById("todo-form").addEventListener("submit", handleSubmit);
+
+
+fetchData();
